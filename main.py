@@ -22,7 +22,7 @@ def get_appoint_by_status(status: str, db: Session=Depends(get_db)):
     return appointment_service.get_appointment_status(status, db)
 
 @app.get("/appointments/{appointment_id}")
-def get_appointment_id(id: int, db:Session=Depends(get_db)):
+def get_appointment_id(appointment_id: int, db:Session=Depends(get_db)):
     return appointment_service.get_appoint_id(id, db)
 
 @app.post("/appointments")
@@ -30,9 +30,9 @@ def create_appoint(input_appoint: Create_appointment, db: Session=Depends(get_db
     return appointment_service.create_appoint(input_appoint,db)
 
 @app.put("/appointments/{appointment_id}")
-def update_appoint(id: int, input_appoint: Create_appointment, db: Session=Depends(get_db)):
+def update_appoint(appointment_id: int, input_appoint: Create_appointment, db: Session=Depends(get_db)):
     return appointment_service.update_appoint(id, input_appoint, db)
 
 @app.delete("/appointments/{appointment_id}")
-def delete_appoint(id: int, db: Session=Depends(get_db)):
+def delete_appoint(appointment_id: int, db: Session=Depends(get_db)):
     return appointment_service.delete_appoint(id, db)
